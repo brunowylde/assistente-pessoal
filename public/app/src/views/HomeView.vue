@@ -105,28 +105,16 @@
             <div class="card-title text-center">
               <strong>TAREFAS DIÁRIAS</strong>
             </div>
-            <div class="w-100 flex align-center">
-              <input type="checkbox" id="checkbox212"/>
-              <label class="margin-checkbox">Duolingo</label>
+            <div class="w-100 flex align-center" v-for="item in rotinas" :key="item.id">
+              <input type="checkbox" v-bind:id="'checkbox-'+item.id"/>
+              <label class="margin-checkbox" v-bind:for="'checkbox-'+item.id">{{item.nome}}</label>
             </div>
-            <div class="w-100 flex align-center">
-              <input type="checkbox" id="checkbox212"/>
-              <label class="margin-checkbox">Exercício Físico</label>
-            </div>
-            <div class="w-100 flex align-center">
-              <input type="checkbox" id="checkbox212"/>
-              <label class="margin-checkbox">Leitura</label>
-            </div>
-            <div class="w-100 flex align-center">
-              <input type="checkbox" id="checkbox212"/>
-              <label class="margin-checkbox">Comando de Voz</label>
-            </div>
-            <div class="w-100 flex align-center">
-              <input type="checkbox" id="checkbox212"/>
-              <label class="margin-checkbox">Chat GPT</label>
-            </div>
-            <div class="w-100">
-              <input type="text" class="w-100" />
+            <div class="w-100 mt-1 flex">
+              <input type="text" class="input-search" placeholder="Digite aqui uma nova rotina!"/>
+              <button class="btn btn-search">
+                <!-- <i class="la la-search"></i> -->
+                A
+              </button>
             </div>
           </div>
         </div>
@@ -165,8 +153,22 @@ import { defineComponent } from 'vue';
 
 export default defineComponent({
   name: 'HomeView',
+  data() {
+    return {
+      rotinas: [] as { id: number, nome: string }[]
+    }
+  },
   components: {
     // HelloWorld,
+  },mounted() {
+    this.getRotinas()
   },
+  methods: {
+    async getRotinas() {
+      const req = await fetch('http://localhost:8000/api/rotinas-diarias')
+      const data = await req.json()
+      this.rotinas = data.rotinas
+    }
+  }
 });
 </script>

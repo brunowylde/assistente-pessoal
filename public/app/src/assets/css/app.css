@@ -103,3 +103,41 @@ body {
 .card-title {
     padding-bottom: 1rem;
 }
+
+.mt-1 {
+    margin-top: 1rem;
+}
+
+input[type="text"] {
+    display: block;
+    padding: 0.5rem 0.75rem;
+    font-size: 14px;
+    line-height: 1;
+    color: rgba(244,244,245,.6);
+    background-color: #040620;
+    background-clip: padding-box;
+    border: 0 solid #c1ccd3;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    border-radius: 0.3rem 0 0 0.3rem;
+}
+
+input[type="text"]:focus {
+    outline: 0;
+}
+
+.input-search {
+    position: relative;
+    -webkit-box-flex: 1;
+    -ms-flex: 1 1 auto;
+    flex: 1 1 auto;
+    width: 1%;
+    min-width: 0;
+}
+
+.btn-search {
+    background-color: #474d84;
+    color: #fff;
+    border: none;
+}
